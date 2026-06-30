@@ -13,6 +13,11 @@ import type {
 
 const BASE = "https://api.chess.com/pub";
 
+// Chess.com recommends a User-Agent that identifies the app and a way to reach
+// the maintainer. We point to the repo (no personal contact details exposed).
+const USER_AGENT =
+  "ChessWrapped/1.0 (+https://github.com/narutiga/chess-wrapped)";
+
 /** Thrown when a username does not exist on Chess.com. */
 export class PlayerNotFoundError extends Error {
   constructor(username: string) {
@@ -23,7 +28,7 @@ export class PlayerNotFoundError extends Error {
 
 async function getJson<T>(url: string, username: string): Promise<T> {
   const res = await fetch(url, {
-    headers: { Accept: "application/json" },
+    headers: { Accept: "application/json", "User-Agent": USER_AGENT },
   });
 
   if (res.status === 404) {
