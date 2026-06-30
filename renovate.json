@@ -8,6 +8,7 @@
   "timezone": "Asia/Tokyo",
   "schedule": ["before 9am on monday"],
   "lockFileMaintenance": { "enabled": true },
+  "platformAutomerge": false,
   "packageRules": [
     {
       "description": "Auto-merge non-major updates once CI passes.",
