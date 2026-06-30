@@ -58,7 +58,7 @@ export default function Home() {
   }
 
   return (
-    <main className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-bg to-bg-2 px-6 py-16 text-center">
+    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-x-hidden bg-gradient-to-b from-bg to-bg-2 px-6 py-12 text-center">
       {/* Ambient layers (very subtle, slow) */}
       <AmbientBackground />
       {/* Floating pieces shared by home and story */}

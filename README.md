@@ -5,6 +5,10 @@
 </p>
 
 <p align="center">
+  <a href="https://chess-wrapped-ruby.vercel.app"><strong>Live demo →</strong></a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/license-MIT-A78BFA" />
   <img src="https://img.shields.io/badge/Next.js-16-BEE8D4" />
   <img src="https://img.shields.io/badge/Chess.com-Public%20API-CBB8F5" />
