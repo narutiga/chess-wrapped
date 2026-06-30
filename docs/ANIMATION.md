@@ -185,6 +185,16 @@ Do not make numbers count too quickly.
 
 The final value should remain visible long enough to appreciate.
 
+When the number lands,
+
+celebrate it with a small gold sparkle burst.
+
+The sparkles appear at completion and fade once.
+
+They never loop.
+
+See Sparkles below.
+
 ---
 
 # Sparkles
@@ -206,6 +216,24 @@ Sparkles should:
 Sparkles celebrate.
 
 They do not entertain.
+
+Color
+
+Sparkles are gold.
+
+Gold is the celebration accent across the experience.
+
+Use it for the burst when a value lands,
+
+for the highlighted favorite mode,
+
+and on the poster.
+
+The scene sparkles burst once after a value settles,
+
+then disappear.
+
+The poster sparkles may rest quietly with a slow twinkle.
 
 ---
 
@@ -321,6 +349,24 @@ Download button fades in
 The animation should communicate:
 
 "This is the final result."
+
+## A Deliberate Exception
+
+The poster is the keepsake, so it is allowed a little more shine
+
+than the rest of the calm experience.
+
+On entrance,
+
+a single soft sheen sweeps diagonally across the card,
+
+once, slowly.
+
+The card itself does not rotate or tilt.
+
+This is the one place flashier light is welcome —
+
+keep it gentle, and keep it to the poster.
 
 ---
 

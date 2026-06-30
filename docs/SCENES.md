@@ -261,8 +261,14 @@ Effects
 * icon becomes lavender
 * text becomes lavender
 * tiny scale animation
-* 2–3 small sparkles
+* 2–3 small gold sparkles
 * sparkles disappear naturally
+
+Sparkles are gold — the celebration accent (see BRAND.md / ANIMATION.md).
+
+The same gold burst is used whenever a value lands
+
+(Games Played, Current Rating, Win Rate).
 
 Hold the completed state.
 
@@ -420,8 +426,9 @@ Every previous scene exists to make this moment meaningful.
 
 ## Display
 
+* Avatar
 * Username
-* Current Rating
+* Current Rating (the hero — see POSTER.md)
 * Peak Rating
 * Games Played
 * Favorite Game Mode

@@ -38,14 +38,15 @@ they should immediately recognize it as Chess Wrapped.
 The eye should naturally move in this order:
 
 1. Chess Wrapped
-2. Username
-3. Peak Rating
+2. Avatar
+3. Username
 4. Current Rating
-5. Games Played
-6. Favorite Game Mode
-7. Win Rate
-8. Playing Since
-9. Footer
+5. Favorite Game Mode
+6. Peak Rating
+7. Games Played
+8. Win Rate
+9. Playing Since
+10. Footer
 
 Never compete for attention.
 
@@ -121,16 +122,22 @@ The username should personalize the poster.
 
 # Hero Statistic
 
-Peak Rating is the hero statistic.
+Current Rating is the hero statistic.
 
-It should receive the most visual emphasis.
+It is the player's "right now" — the number they identify with today.
+
+Peak Rating still appears, but as a supporting stat.
+
+The hero should receive the most visual emphasis.
+
+It is rendered large, in gold, with generous space above and below.
 
 Suggestions:
 
-* slightly larger card
-* stronger contrast
-* subtle glow
-* generous spacing
+* the largest number on the poster
+* gold, to set it apart from the white supporting stats
+* a soft glow
+* generous spacing so it stands alone
 
 Do not use dramatic effects.
 
@@ -226,23 +233,31 @@ Never overwhelm the layout.
 
 # Color
 
-Primary
+The poster inverts the calm light interface into a rich, deep keepsake.
 
-Lavender
+Card background
 
-Secondary
-
-Mint
-
-Background
-
-Cream
+Deep lavender gradient (the same purple used for statistics)
 
 Text
 
-Dark Gray
+White, at varying opacity for hierarchy
 
-Avoid introducing additional accent colors.
+Hero number & sparkles
+
+Gold
+
+Favorite mode label
+
+A quiet translucent pill on the dark card
+
+The deep purple makes the white text and gold sparkles sing.
+
+This is the one surface that is dark rather than cream —
+
+it is meant to feel like a finished, framed piece.
+
+Avoid introducing colors beyond purple, white, and gold.
 
 Consistency strengthens the brand.
 
@@ -288,11 +303,39 @@ Allow users to enjoy the finished poster.
 
 ---
 
-# Download Button
+# Actions
 
-Display after the poster animation completes.
+Two actions appear after the poster animation completes.
 
-Button should feel inviting.
+## Download
+
+The primary action.
+
+Exports the poster as a PNG using html-to-image.
+
+The exported image must match what is on screen:
+
+gradient, gold, sparkles, avatar, rounded corners.
+
+Always verify the exported file (see DEVELOPMENT.md).
+
+## Copy link
+
+The secondary action.
+
+Copies a shareable URL of the form
+
+/?u=username
+
+Opening that link plays that player's Wrapped from the start.
+
+Show brief "Copied!" feedback, then return.
+
+Style it quieter than Download — it must not compete with it.
+
+## Buttons
+
+Should feel inviting.
 
 Hover
 
@@ -304,6 +347,16 @@ Click
 * small scale
 
 Do not over-animate.
+
+## Sharing — Note
+
+Link previews (OGP cards on X, Discord, etc.) are not yet supported,
+
+because the username is read on the client.
+
+Rich link previews would require server-rendered pages per username
+
+(a future enhancement). For now, the image itself is the shareable artifact.
 
 ---
 

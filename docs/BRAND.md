@@ -87,6 +87,28 @@ Dark Gray
 
 ---
 
+## Celebration Accent
+
+Gold
+
+`#F5D98B`
+
+Gold is the celebration accent.
+
+It is not part of the everyday interface.
+
+It appears only in moments of delight:
+
+* the sparkle burst when a number lands
+* the highlighted favorite mode
+* the hero number and sparkles on the poster
+
+Used sparingly, gold signals "this is special."
+
+Used everywhere, it would cheapen the look — so keep it rare.
+
+---
+
 # Color Usage
 
 Lavender represents the brand.
@@ -100,6 +122,8 @@ It should be used for:
 * active elements
 
 Mint is used only as a secondary accent.
+
+Gold is used only for celebration moments (see above).
 
 Cream should be the primary page background.
 

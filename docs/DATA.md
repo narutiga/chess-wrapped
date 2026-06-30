@@ -42,6 +42,8 @@ WrappedData
 
   joinedYear      number        4-digit year, e.g. 2026
   followers       number        follower count
+
+  avatar          string|null   avatar image URL, null if none
 ```
 
 GameMode is always one of
@@ -168,6 +170,7 @@ Stage A uses two endpoints.
 username    ← username
 followers   ← followers
 joinedYear  ← year of (joined as Unix seconds)
+avatar      ← avatar (null if absent)
 ```
 
 joined is a Unix timestamp in seconds.

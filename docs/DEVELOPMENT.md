@@ -297,6 +297,40 @@ Export should preserve:
 * SVG quality
 * rounded corners
 
+Export is done with html-to-image (toPng) at 2x pixel ratio.
+
+The avatar is a plain <img> with crossOrigin set,
+
+so it does not taint the canvas during export.
+
+---
+
+# Sharing
+
+Two ways to share from the poster.
+
+Download
+
+Saves the PNG (see Poster Generation).
+
+Copy link
+
+Copies a URL of the form /?u=username.
+
+The home page reads ?u= on load and plays that player's Wrapped.
+
+This keeps the single-page architecture — no routing required.
+
+Note
+
+This client-side approach means no per-user link previews (OGP).
+
+Rich previews would need server-rendered pages per username
+
+and dynamic OG images. That is a future enhancement,
+
+not a requirement today.
+
 ---
 
 # Performance
@@ -388,6 +422,10 @@ Achievements
 Openings
 
 Monthly Wrapped
+
+Link previews (per-user OGP via server-rendered pages)
+
+Stage B yearly archives (see SCENES.md / DATA.md)
 
 OAuth
 
