@@ -119,6 +119,8 @@ export function buildWrappedDataFromGames(
     games_ += total(tally);
   }
 
+  const joined = new Date(player.joined * 1000);
+
   return {
     username: player.username,
     year,
@@ -129,10 +131,24 @@ export function buildWrappedDataFromGames(
     bestRating: favoriteTally.ratings.length
       ? Math.max(...favoriteTally.ratings)
       : 0,
-    joinedYear: new Date(player.joined * 1000).getUTCFullYear(),
+    joinedYear: joined.getUTCFullYear(),
+    joinedLabel: `${MONTHS[joined.getUTCMonth()]} ${joined.getUTCFullYear()}`,
+    country: countryCode(player.country),
     followers: player.followers,
     avatar: player.avatar ?? null,
   };
+}
+
+const MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+/** The ISO code at the end of a Chess.com country URL (".../country/JP" → "JP"). */
+function countryCode(url: string | undefined): string | null {
+  if (!url) return null;
+  const code = url.split("/").pop();
+  return code && code.length === 2 ? code.toUpperCase() : null;
 }
 
 function lastRating(t: ModeTally): number {

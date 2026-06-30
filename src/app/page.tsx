@@ -47,7 +47,15 @@ export default function Home() {
   }, []);
 
   // Once data is loaded, hand off to the scene player.
-  if (data) return <WrappedPlayer data={data} />;
+  if (data) {
+    const handleRestart = () => {
+      // Drop the ?u= param so a reload doesn't reopen this player.
+      window.history.replaceState(null, "", window.location.pathname);
+      setData(null);
+      setExampleError(null);
+    };
+    return <WrappedPlayer data={data} onRestart={handleRestart} />;
+  }
 
   return (
     <main className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-bg to-bg-2 px-6 py-16 text-center">

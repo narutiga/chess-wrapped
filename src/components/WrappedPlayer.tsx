@@ -14,7 +14,13 @@ import type { WrappedData } from "@/types/wrapped";
  * Auto-advances per scene timing (SCENES.md). Tap/click skips ahead.
  * Knows nothing about how the data was fetched — it just receives WrappedData.
  */
-export function WrappedPlayer({ data }: { data: WrappedData }) {
+export function WrappedPlayer({
+  data,
+  onRestart,
+}: {
+  data: WrappedData;
+  onRestart?: () => void;
+}) {
   const durations = SCENES.map((s) => s.duration);
   const { index, isLast, next } = useSceneProgress(durations);
 
@@ -24,14 +30,18 @@ export function WrappedPlayer({ data }: { data: WrappedData }) {
   return (
     <main
       onClick={() => !isLast && next()}
-      className="no-select relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-bg to-bg-2"
+      // During playback the scenes are pinned and clipped; on the final
+      // (poster) scene we allow vertical scroll so tall content stays reachable.
+      className={`no-select relative min-h-screen w-full bg-gradient-to-b from-bg to-bg-2 ${
+        isLast ? "overflow-y-auto" : "overflow-hidden"
+      }`}
     >
       <AmbientBackground />
       <FloatingPieces className="text-[7rem] opacity-[0.16]" />
 
       <AnimatePresence mode="wait">
-        <SceneContainer key={current.id}>
-          <Scene data={data} />
+        <SceneContainer key={current.id} scrollable={isLast}>
+          <Scene data={data} onRestart={onRestart} />
         </SceneContainer>
       </AnimatePresence>
     </main>
