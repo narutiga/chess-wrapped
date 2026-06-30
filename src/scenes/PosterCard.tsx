@@ -54,7 +54,7 @@ export function PosterCard({
             "linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%)",
           backgroundSize: "36px 36px",
           backgroundPosition: "0 0, 18px 18px",
-          opacity: 0.11,
+          opacity: 0.16,
           // Wide radial mask: the pattern shows in the bottom-right corner,
           // fading up and to the left.
           WebkitMaskImage:
@@ -142,7 +142,15 @@ export function PosterCard({
         <span className="text-[0.6rem] font-bold uppercase tracking-[0.25em] text-white/55">
           Current rating
         </span>
-        <p className="mt-1 text-7xl font-extrabold leading-none text-gold drop-shadow-[0_2px_10px_rgba(245,217,139,0.4)]">
+        <p
+          className="mt-1 text-7xl font-extrabold leading-none"
+          style={{
+            // Pale warm yellow number with a soft glow.
+            color: "#f8e4a3",
+            textShadow:
+              "0 0 10px rgba(245,217,139,0.35), 0 0 24px rgba(245,217,139,0.2), 0 0 44px rgba(255,245,200,0.14)",
+          }}
+        >
           {data.currentRating.toLocaleString()}
         </p>
       </div>
@@ -167,7 +175,7 @@ export function PosterCard({
       <div className="relative mt-10">
         <div className="flex items-center justify-center gap-3">
           <span className="h-0.5 flex-1 rounded-full bg-white/25" />
-          <span aria-hidden className="text-base text-gold">
+          <span aria-hidden className="text-base text-white">
             ♛
           </span>
           <span className="h-0.5 flex-1 rounded-full bg-white/25" />
