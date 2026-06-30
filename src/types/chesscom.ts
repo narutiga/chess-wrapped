@@ -18,6 +18,8 @@ export interface ChessComPlayer {
   joined: number;
   /** Avatar image URL; absent if the player has none. */
   avatar?: string;
+  /** Country API URL ending in the ISO code, e.g. ".../country/JP". */
+  country?: string;
 }
 
 /** GET /pub/player/{username}/games/archives — list of monthly archive URLs. */

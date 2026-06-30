@@ -19,7 +19,7 @@ type Spark = {
 // Positioned to frame the card without covering the central content.
 // Strong size contrast: a few large hero sparkles among small ones.
 const SPARKS: Spark[] = [
-  { top: "8%", left: "12%", size: 26, delay: 0.0, opacity: 0.9 },
+  { top: "3%", left: "5%", size: 26, delay: 0.0, opacity: 0.9 },
   { top: "16%", left: "85%", size: 10, delay: 0.6, opacity: 0.8 },
   { top: "6%", left: "62%", size: 7, delay: 1.1, opacity: 0.6 },
   { top: "44%", left: "6%", size: 8, delay: 0.3, opacity: 0.7 },

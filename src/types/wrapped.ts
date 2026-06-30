@@ -32,6 +32,10 @@ export interface WrappedData {
 
   /** 4-digit year the player joined, e.g. 2026. */
   joinedYear: number;
+  /** Month + year the player joined, e.g. "Feb 2026". */
+  joinedLabel: string;
+  /** ISO 3166-1 alpha-2 country code (e.g. "JP"), or null if unknown. */
+  country: string | null;
   /** Follower count (a lifetime value). */
   followers: number;
 
