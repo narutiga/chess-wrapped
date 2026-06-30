@@ -34,4 +34,7 @@ export interface WrappedData {
   joinedYear: number;
   /** Follower count (a lifetime value). */
   followers: number;
+
+  /** Avatar image URL, or null if the player has none. */
+  avatar: string | null;
 }
