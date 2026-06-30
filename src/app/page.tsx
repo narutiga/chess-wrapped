@@ -68,7 +68,7 @@ export default function Home() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 flex flex-col items-center"
+        className="relative z-10 flex w-full max-w-md flex-col items-center"
       >
         <motion.p
           variants={item}
@@ -78,19 +78,16 @@ export default function Home() {
         </motion.p>
         <motion.h1
           variants={item}
-          className="max-w-xl text-balance text-4xl font-extrabold leading-tight text-ink sm:text-5xl"
+          className="w-full text-3xl font-extrabold leading-tight text-ink sm:text-5xl"
         >
-          Turn your chess into
-          <br />
-          <span className="text-lavender-gradient">a story worth sharing</span>.
+          Turn your chess into a{" "}
+          <span className="text-lavender-gradient">story worth sharing</span>.
         </motion.h1>
         <motion.p
           variants={item}
-          className="mt-5 max-w-md text-pretty text-base text-ink-soft sm:text-lg"
+          className="mt-5 w-full text-pretty text-base text-ink-soft sm:text-lg"
         >
-          Just enter a Chess.com username.
-          <br />
-          Your own Wrapped — made to show off.
+          Just enter a Chess.com username. Your own Wrapped — made to show off.
         </motion.p>
 
         <motion.div variants={item} className="mt-10 flex w-full justify-center">
