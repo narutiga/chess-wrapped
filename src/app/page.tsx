@@ -1,65 +1,113 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState, useTransition } from "react";
+import { motion, type Variants } from "motion/react";
+import { getWrapped } from "@/app/actions";
+import { AmbientBackground } from "@/components/AmbientBackground";
+import { FloatingPieces } from "@/components/FloatingPieces";
+import { SearchBar } from "@/components/SearchBar";
+import { WrappedPlayer } from "@/components/WrappedPlayer";
+import type { WrappedData } from "@/types/wrapped";
+
+const EXAMPLES = ["hikaru", "magnuscarlsen", "erik"];
+
+// Staggered entrance: each element fades up slightly after the previous one.
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+const item: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 export default function Home() {
+  const [data, setData] = useState<WrappedData | null>(null);
+  const [exampleError, setExampleError] = useState<string | null>(null);
+  const [, startTransition] = useTransition();
+
+  function runExample(name: string) {
+    setExampleError(null);
+    startTransition(async () => {
+      const result = await getWrapped(name);
+      if (result.ok) setData(result.data);
+      else setExampleError(result.message);
+    });
+  }
+
+  // Open a shared link (?u=username) straight into that player's Wrapped.
+  useEffect(() => {
+    const u = new URLSearchParams(window.location.search).get("u");
+    if (!u) return;
+    startTransition(async () => {
+      const result = await getWrapped(u);
+      if (result.ok) setData(result.data);
+      else setExampleError(result.message);
+    });
+  }, []);
+
+  // Once data is loaded, hand off to the scene player.
+  if (data) return <WrappedPlayer data={data} />;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-bg to-bg-2 px-6 py-16 text-center">
+      {/* Ambient layers (very subtle, slow) */}
+      <AmbientBackground />
+      {/* Floating pieces shared by home and story */}
+      <FloatingPieces className="text-[7rem] opacity-[0.16]" />
+
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 flex flex-col items-center"
+      >
+        <motion.p
+          variants={item}
+          className="mb-3 rounded-full bg-white/70 px-4 py-1 text-sm font-bold text-primary-deep shadow-sm"
+        >
+          ♟️ Chess Wrapped
+        </motion.p>
+        <motion.h1
+          variants={item}
+          className="max-w-xl text-balance text-4xl font-extrabold leading-tight text-ink sm:text-5xl"
+        >
+          Turn your chess into
+          <br />
+          <span className="text-lavender-gradient">a story worth sharing</span>.
+        </motion.h1>
+        <motion.p
+          variants={item}
+          className="mt-5 max-w-md text-pretty text-base text-ink-soft sm:text-lg"
+        >
+          Just enter a Chess.com username.
+          <br />
+          Your own Wrapped — made to show off.
+        </motion.p>
+
+        <motion.div variants={item} className="mt-10 flex w-full justify-center">
+          <SearchBar onResult={setData} />
+        </motion.div>
+
+        <motion.p variants={item} className="mt-6 text-sm text-ink-soft">
+          Try it:
+          {EXAMPLES.map((u) => (
+            <button
+              key={u}
+              onClick={() => runExample(u)}
+              className="mx-1 font-bold text-primary-deep underline-offset-2 hover:underline"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              {u}
+            </button>
+          ))}
+        </motion.p>
+
+        {exampleError && (
+          <motion.p variants={item} className="mt-4 text-sm text-ink-soft">
+            {exampleError}
+          </motion.p>
+        )}
+      </motion.div>
+    </main>
   );
 }
